@@ -4,6 +4,7 @@ import { Space_Grotesk, DM_Sans } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { CursorGlow } from "@/components/cursor-glow"
 import { Suspense } from "react"
 import "./globals.css"
 
@@ -43,6 +44,7 @@ html {
         `}</style>
       </head>
       <body className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
+        <CursorGlow />
         <Suspense fallback={<div>Loading...</div>}>
           <Header />
           <main>{children}</main>

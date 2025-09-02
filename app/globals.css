@@ -4,44 +4,38 @@
 
 @layer base {
   :root {
-    /* Updated color tokens for Gluons Lab space theme */
-    --background: 210 11% 7%; /* Dark space background */
-    --foreground: 0 0% 100%; /* Pure white for primary text */
+    /* Updated to cleaner, more minimal color scheme */
+    --background: 0 0% 4%; /* Very dark background like chronark */
+    --foreground: 0 0% 98%; /* Slightly off-white for softer contrast */
 
-    --muted: 220 13% 18%; /* Darker muted background */
-    --muted-foreground: 0 0% 100% / 0.7; /* Semi-transparent white */
-    --muted-foreground-light: 0 0% 100% / 0.5;
-    --muted-foreground-dark: 0 0% 100% / 0.6;
+    --muted: 0 0% 8%; /* Subtle muted background */
+    --muted-foreground: 0 0% 65%; /* Medium gray for secondary text */
+    --muted-foreground-light: 0 0% 50%;
+    --muted-foreground-dark: 0 0% 75%;
 
-    --card: 220 13% 18% / 0.5; /* Semi-transparent card background */
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 6% / 0.8; /* Very subtle card background */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 210 11% 7%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Primary accent using vibrant purple for innovation */
+    /* Keep purple for buttons and icons as requested */
     --primary: 262 83% 58%; /* #8b5cf6 - vibrant purple */
     --primary-foreground: 0 0% 100%;
     --primary-dark: 262 83% 48%;
     --primary-light: 262 83% 68%;
 
-    /* Secondary using medium gray */
-    --secondary: 220 9% 46%; /* #6b7280 - medium gray */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 15%; /* Darker secondary */
+    --secondary-foreground: 0 0% 98%;
 
-    --accent: 262 83% 58%; /* Same as primary for consistency */
+    --accent: 262 83% 58%; /* Purple accent */
     --accent-foreground: 0 0% 100%;
 
-    --border: 0 0% 100% / 0.1; /* Subtle white border */
-    --border-light: 0 0% 100% / 0.05;
-    --border-dark: 0 0% 100% / 0.15;
+    --border: 0 0% 100% / 0.08; /* Very subtle borders */
+    --border-light: 0 0% 100% / 0.04;
+    --border-dark: 0 0% 100% / 0.12;
 
     --ring: 262 83% 58%;
-
-    /* Additional space-themed colors */
-    --star: 0 0% 100%; /* White for stars */
-    --nebula: 262 83% 58% / 0.3; /* Purple nebula effect */
-    --cosmic: 220 13% 18%; /* Cosmic background */
 
     --radius: 0.5rem;
   }
@@ -53,35 +47,18 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Added space background with stars effect */
-    background-image: radial-gradient(2px 2px at 20px 30px, hsl(var(--star)), transparent),
-      radial-gradient(2px 2px at 40px 70px, hsl(var(--star)), transparent),
-      radial-gradient(1px 1px at 90px 40px, hsl(var(--star)), transparent),
-      radial-gradient(1px 1px at 130px 80px, hsl(var(--star)), transparent),
-      radial-gradient(2px 2px at 160px 30px, hsl(var(--star)), transparent);
-    background-repeat: repeat;
-    background-size: 200px 100px;
-    animation: twinkle 20s ease-in-out infinite alternate;
+    /* Clean dot grid pattern like chronark instead of stars */
+    background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0);
+    background-size: 20px 20px;
+    position: relative;
+    overflow-x: hidden;
   }
 }
 
-/* Added twinkling stars animation */
-@keyframes twinkle {
-  0% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.3;
-  }
-}
-
-/* Interactive cursor effects */
-@layer utilities {
+/* Interactive cursor glow effect that follows mouse */
+@layer components {
   .cursor-glow {
-    cursor: none;
+    position: relative;
   }
 
   .cursor-glow::before {
@@ -89,13 +66,51 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 20px;
-    height: 20px;
-    background: radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, hsl(var(--primary) / 0.1) 0%, hsl(var(--primary) / 0.05) 25%, transparent 50%);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 1;
     transform: translate(-50%, -50%);
-    transition: all 0.1s ease;
+    transition: opacity 0.3s ease;
+    opacity: 0;
   }
+
+  .cursor-glow:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Global cursor effect component */
+.global-cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, hsl(var(--primary) / 0.04) 25%, transparent 50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s ease-out;
+  opacity: 0;
+}
+
+/* Smooth animations for interactive elements */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.glow-on-hover:hover {
+  animation: glow-pulse 2s ease-in-out infinite;
 }
