@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Updated color tokens for Gluons Lab space theme */
+    --background: 210 11% 7%; /* Dark space background */
+    --foreground: 0 0% 100%; /* Pure white for primary text */
+
+    --muted: 220 13% 18%; /* Darker muted background */
+    --muted-foreground: 0 0% 100% / 0.7; /* Semi-transparent white */
+    --muted-foreground-light: 0 0% 100% / 0.5;
+    --muted-foreground-dark: 0 0% 100% / 0.6;
+
+    --card: 220 13% 18% / 0.5; /* Semi-transparent card background */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 210 11% 7%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Primary accent using vibrant purple for innovation */
+    --primary: 262 83% 58%; /* #8b5cf6 - vibrant purple */
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 262 83% 48%;
+    --primary-light: 262 83% 68%;
+
+    /* Secondary using medium gray */
+    --secondary: 220 9% 46%; /* #6b7280 - medium gray */
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 262 83% 58%; /* Same as primary for consistency */
+    --accent-foreground: 0 0% 100%;
+
+    --border: 0 0% 100% / 0.1; /* Subtle white border */
+    --border-light: 0 0% 100% / 0.05;
+    --border-dark: 0 0% 100% / 0.15;
+
+    --ring: 262 83% 58%;
+
+    /* Additional space-themed colors */
+    --star: 0 0% 100%; /* White for stars */
+    --nebula: 262 83% 58% / 0.3; /* Purple nebula effect */
+    --cosmic: 220 13% 18%; /* Cosmic background */
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Added space background with stars effect */
+    background-image: radial-gradient(2px 2px at 20px 30px, hsl(var(--star)), transparent),
+      radial-gradient(2px 2px at 40px 70px, hsl(var(--star)), transparent),
+      radial-gradient(1px 1px at 90px 40px, hsl(var(--star)), transparent),
+      radial-gradient(1px 1px at 130px 80px, hsl(var(--star)), transparent),
+      radial-gradient(2px 2px at 160px 30px, hsl(var(--star)), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: twinkle 20s ease-in-out infinite alternate;
+  }
+}
+
+/* Added twinkling stars animation */
+@keyframes twinkle {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+/* Interactive cursor effects */
+@layer utilities {
+  .cursor-glow {
+    cursor: none;
+  }
+
+  .cursor-glow::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, hsl(var(--primary)) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: all 0.1s ease;
+  }
+}
