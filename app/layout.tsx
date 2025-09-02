@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Space_Grotesk, DM_Sans } from "next/font/google"
+import { Space_Grotesk, DM_Sans, Kode_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -18,6 +18,12 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-dm-sans",
+})
+
+const kodeMono = Kode_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-kode-mono",
 })
 
 export const metadata: Metadata = {
@@ -40,10 +46,11 @@ html {
   font-family: ${dmSans.style.fontFamily};
   --font-heading: ${spaceGrotesk.variable};
   --font-body: ${dmSans.variable};
+  --font-mono: ${kodeMono.variable};
 }
         `}</style>
       </head>
-      <body className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
+      <body className={`${spaceGrotesk.variable} ${dmSans.variable} ${kodeMono.variable} antialiased`}>
         <CursorGlow />
         <Suspense fallback={<div>Loading...</div>}>
           <Header />

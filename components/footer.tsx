@@ -4,7 +4,7 @@ import { Twitter, Github, Linkedin, Mail, Phone, MapPin } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="w-full bg-cosmic/50 border-t border-border/50 mt-16">
+    <footer className="w-full border-t border-border/50 mt-16">
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
@@ -12,7 +12,7 @@ export function Footer() {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                 <div className="w-4 h-4 bg-primary-foreground rounded-full animate-pulse"></div>
               </div>
-              <span className="text-foreground text-xl font-heading font-bold">Gluons Lab</span>
+              <span className="text-foreground text-xl font-mono font-bold">Gluons Lab</span>
             </div>
             <p className="text-muted-foreground text-sm mb-6 max-w-md">
               Somos os Arquitetos das Conexões Invisíveis. A força coesiva que conecta desafios a oportunidades no mundo

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export function Header() {
   const navItems = [
@@ -31,15 +32,22 @@ export function Header() {
   return (
     <header className="w-full py-4 px-6 sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center p-1">
+              <Image
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-15%20at%2011.30.13-EfC9Z4dLGyZIHeKj0oHfAbKXvUYI93.jpeg"
+                alt="Gluons Lab Logo"
+                width={24}
+                height={24}
+                className="w-full h-full object-contain filter invert"
+              />
+            </div>
+            <span className="text-foreground text-xl font-mono font-bold">Gluons Lab</span>
+          </Link>
+        </div>
+
         <div className="flex items-center gap-6">
-          <div className="flex items-center gap-3">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <div className="w-4 h-4 bg-primary-foreground rounded-full animate-pulse"></div>
-              </div>
-              <span className="text-foreground text-xl font-heading font-bold">Gluons Lab</span>
-            </Link>
-          </div>
           <nav className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
               <Link
@@ -52,8 +60,6 @@ export function Header() {
               </Link>
             ))}
           </nav>
-        </div>
-        <div className="flex items-center gap-4">
           <Link href="/contato" className="hidden md:block">
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2 rounded-full font-medium shadow-sm">
               Contato
