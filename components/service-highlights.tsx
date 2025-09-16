@@ -28,7 +28,7 @@ const services = [
 
 export function ServiceHighlights() {
   return (
-    <section className="py-8">
+    <section className="py-1">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
           Conectando Desafios a Oportunidades
@@ -57,7 +57,7 @@ export function ServiceHighlights() {
 
       <div className="text-center">
         <Link href="/servicos">
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+          <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-xl shadow-primary/40 hover:border-primary/70">
             Ver Todos os Serviços
           </Button>
         </Link>

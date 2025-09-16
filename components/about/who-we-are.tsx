@@ -22,7 +22,7 @@ export function WhoWeAre() {
 
         <div className="relative">
           <img
-            src="/modern-tech-team-working-with-holographic-displays.png"
+            src="/modo_5.jpg"
             alt="Equipe Gluons Lab trabalhando com tecnologia avançada"
             className="rounded-lg shadow-2xl w-full"
           />

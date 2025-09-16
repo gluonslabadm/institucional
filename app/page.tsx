@@ -13,22 +13,22 @@ export default function HomePage() {
         <HeroSlider />
 
         {/* Service Highlights */}
-        <AnimatedSection className="relative z-10 max-w-7xl mx-auto px-6 mt-16" delay={0.1}>
+        <AnimatedSection className="relative z-10 max-w-7xl mx-auto px-6 mt-6" delay={0.1}>
           <ServiceHighlights />
         </AnimatedSection>
 
         {/* About Us Preview */}
-        <AnimatedSection className="relative z-10 max-w-7xl mx-auto px-6 mt-16" delay={0.2}>
+        <AnimatedSection className="relative z-10 max-w-7xl mx-auto px-6 mt-6" delay={0.2}>
           <AboutPreview />
         </AnimatedSection>
 
         {/* Blog Preview */}
-        <AnimatedSection className="relative z-10 max-w-7xl mx-auto px-6 mt-16" delay={0.3}>
+        <AnimatedSection className="relative z-10 max-w-7xl mx-auto px-6 mt-6" delay={0.3}>
           <BlogPreview />
         </AnimatedSection>
 
         {/* Final CTA */}
-        <AnimatedSection className="relative z-10 max-w-7xl mx-auto px-6 mt-16" delay={0.4}>
+        <AnimatedSection className="relative z-10 max-w-7xl mx-auto px-6 mt-6" delay={0.4}>
           <CTASection />
         </AnimatedSection>
       </div>
