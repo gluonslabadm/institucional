@@ -1,0 +1,34 @@
+
+## 1. Melhorias Globais (Arquivos: `globals.css`, `tailwind.config.ts`)
+
+A base do seu design é sólida. O tema escuro com fundo pontilhado é minimalista e elegante.
+
+### O que fazer:
+
+#### a) Animação no Background Pontilhado
+Para dar mais vida à página, podemos fazer o background se mover sutilmente.
+
+- **Onde mexer:** `app/globals.css`
+- **Como fazer:** Adicione uma animação de `keyframes` que move a posição do `background-image`.
+
+```css
+/* Adicione no final do seu globals.css */
+@keyframes move-background {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 20px 20px; /* O mesmo que o background-size */
+  }
+}
+
+/* Modifique a classe 'body' */
+body {
+  @apply bg-background text-foreground;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+  position: relative;
+  overflow-x: hidden;
+  animation: move-background 10s linear infinite; /* Adicione esta linha */
+}
+```

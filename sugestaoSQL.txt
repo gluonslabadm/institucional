@@ -1,0 +1,192 @@
+-- Sugestão de Estrutura de Banco de Dados para Supabase (PostgreSQL)
+-- Analisando as áreas do site: Blog, Loja, Contato, Serviços, Depoimentos e FAQ.
+
+-- =====================================================================
+-- HABILITAR EXTENSÕES (se ainda não estiverem ativas no seu projeto Supabase)
+-- =====================================================================
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- =====================================================================
+-- ÁREA DO BLOG (/blog)
+-- =====================================================================
+
+-- Tabela para os autores dos posts (relacionada com a autenticação do Supabase)
+-- Supabase já provê a tabela `auth.users`. Vamos nos referenciar a ela.
+
+-- Tabela para as categorias dos posts
+CREATE TABLE public.categories (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL UNIQUE,
+  slug TEXT NOT NULL UNIQUE,
+  description TEXT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+-- Habilitar RLS (Row Level Security) para a tabela de categorias
+ALTER TABLE public.categories ENABLE ROW LEVEL SECURITY;
+
+-- Tabela principal para os posts do blog
+CREATE TABLE public.posts (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  author_id UUID REFERENCES auth.users(id) ON DELETE SET NULL, -- Chave estrangeira para o autor
+  slug TEXT NOT NULL UNIQUE,
+  title TEXT NOT NULL,
+  content TEXT NOT NULL, -- Conteúdo principal do post em Markdown ou HTML
+  excerpt TEXT, -- Um resumo para os cards de preview
+  cover_image_url TEXT, -- URL para a imagem de capa (pode ser do Supabase Storage)
+  status TEXT DEFAULT 'draft' CHECK (status IN ('draft', 'published', 'archived')), -- Status do post
+  published_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+-- Habilitar RLS para a tabela de posts
+ALTER TABLE public.posts ENABLE ROW LEVEL SECURITY;
+
+-- Tabela de junção para o relacionamento N-N entre posts e categorias
+CREATE TABLE public.post_categories (
+  post_id UUID NOT NULL REFERENCES public.posts(id) ON DELETE CASCADE,
+  category_id UUID NOT NULL REFERENCES public.categories(id) ON DELETE CASCADE,
+  PRIMARY KEY (post_id, category_id)
+);
+-- Habilitar RLS para a tabela de junção
+ALTER TABLE public.post_categories ENABLE ROW LEVEL SECURITY;
+
+
+-- =====================================================================
+-- ÁREA DA LOJA (/store)
+-- =====================================================================
+
+-- Tabela para categorias de produtos
+CREATE TABLE public.product_categories (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL UNIQUE,
+  slug TEXT NOT NULL UNIQUE,
+  description TEXT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+-- Habilitar RLS
+ALTER TABLE public.product_categories ENABLE ROW LEVEL SECURITY;
+
+-- Tabela principal de produtos
+CREATE TABLE public.products (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  description TEXT,
+  price NUMERIC(10, 2) NOT NULL, -- Usar NUMERIC para valores monetários
+  sku TEXT UNIQUE, -- Stock Keeping Unit
+  stock_quantity INT DEFAULT 0,
+  image_urls JSONB, -- Usar JSONB para uma lista flexível de URLs de imagens
+  status TEXT DEFAULT 'active' CHECK (status IN ('active', 'draft', 'archived')),
+  created_at TIMESTAMPTZ DEFAULT now(),
+  updated_at TIMESTAMPTZ DEFAULT now()
+);
+-- Habilitar RLS
+ALTER TABLE public.products ENABLE ROW LEVEL SECURITY;
+
+-- Tabela de junção para produtos e suas categorias
+CREATE TABLE public.product_product_categories (
+  product_id UUID NOT NULL REFERENCES public.products(id) ON DELETE CASCADE,
+  category_id UUID NOT NULL REFERENCES public.product_categories(id) ON DELETE CASCADE,
+  PRIMARY KEY (product_id, category_id)
+);
+-- Habilitar RLS
+ALTER TABLE public.product_product_categories ENABLE ROW LEVEL SECURITY;
+
+-- Tabela de pedidos
+CREATE TABLE public.orders (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  user_id UUID REFERENCES auth.users(id) ON DELETE SET NULL, -- Pode ser nulo para compras de convidados
+  total_amount NUMERIC(10, 2) NOT NULL,
+  status TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'paid', 'shipped', 'delivered', 'cancelled')),
+  shipping_address JSONB, -- JSONB para armazenar o endereço de entrega estruturado
+  billing_address JSONB, -- Endereço de cobrança
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+-- Habilitar RLS
+ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
+
+-- Tabela de itens de um pedido
+CREATE TABLE public.order_items (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  order_id UUID NOT NULL REFERENCES public.orders(id) ON DELETE CASCADE,
+  product_id UUID NOT NULL REFERENCES public.products(id) ON DELETE RESTRICT, -- Não deletar um produto se ele estiver em um pedido
+  quantity INT NOT NULL,
+  price_at_purchase NUMERIC(10, 2) NOT NULL -- Preço do produto no momento da compra
+);
+-- Habilitar RLS
+ALTER TABLE public.order_items ENABLE ROW LEVEL SECURITY;
+
+
+-- =====================================================================
+-- CONTEÚDO GERAL DO SITE (Depoimentos, FAQ, Serviços)
+-- =====================================================================
+
+-- Tabela para Depoimentos (Testimonials)
+CREATE TABLE public.testimonials (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  author_name TEXT NOT NULL,
+  author_role TEXT, -- Ex: "CEO, Acme Inc."
+  author_avatar_url TEXT, -- URL para o avatar
+  content TEXT NOT NULL,
+  is_featured BOOLEAN DEFAULT false, -- Para destacar na página inicial
+  display_order INT, -- Para controlar a ordem de exibição
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+-- Habilitar RLS
+ALTER TABLE public.testimonials ENABLE ROW LEVEL SECURITY;
+
+-- Tabela para Perguntas Frequentes (FAQ)
+CREATE TABLE public.faqs (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  question TEXT NOT NULL,
+  answer TEXT NOT NULL,
+  display_order INT, -- Para controlar a ordem
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+-- Habilitar RLS
+ALTER TABLE public.faqs ENABLE ROW LEVEL SECURITY;
+
+-- Tabela para Serviços (/servicos)
+CREATE TABLE public.services (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  slug TEXT NOT NULL UNIQUE,
+  description TEXT NOT NULL,
+  icon_svg TEXT, -- Pode armazenar o conteúdo do SVG ou uma URL
+  image_url TEXT,
+  is_featured BOOLEAN DEFAULT false,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+-- Habilitar RLS
+ALTER TABLE public.services ENABLE ROW LEVEL SECURITY;
+
+
+-- =====================================================================
+-- ÁREA DE CONTATO (/contato)
+-- =====================================================================
+
+-- Tabela para armazenar os envios do formulário de contato
+CREATE TABLE public.contact_submissions (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  message TEXT NOT NULL,
+  status TEXT DEFAULT 'new' CHECK (status IN ('new', 'read', 'archived')),
+  submitted_at TIMESTAMPTZ DEFAULT now()
+);
+-- Habilitar RLS (provavelmente apenas para admins)
+ALTER TABLE public.contact_submissions ENABLE ROW LEVEL SECURITY;
+
+-- =====================================================================
+-- POLÍTICAS DE RLS (EXEMPLOS)
+-- =====================================================================
+-- Exemplo: Permitir que todos leiam posts publicados.
+CREATE POLICY "Allow public read access to published posts" ON public.posts
+  FOR SELECT USING (status = 'published');
+
+-- Exemplo: Permitir que usuários vejam seus próprios pedidos.
+CREATE POLICY "Allow users to see their own orders" ON public.orders
+  FOR SELECT USING (auth.uid() = user_id);
+
+-- Lembre-se de criar políticas de RLS para todas as tabelas, definindo quem pode
+-- LER (SELECT), CRIAR (INSERT), ATUALIZAR (UPDATE) e DELETAR (DELETE) os dados.
+-- Esta é uma das funcionalidades mais importantes do Supabase para segurança.

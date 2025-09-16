@@ -1,3 +1,5 @@
+"use client"
+import React, { useState } from "react"
 import AiCodeReviews from "./bento/ai-code-reviews"
 import RealtimeCodingPreviews from "./bento/real-time-previews"
 import OneClickIntegrationsIllustration from "./bento/one-click-integrations-illustration"
@@ -6,7 +8,18 @@ import EasyDeployment from "./bento/easy-deployment"
 import ParallelCodingAgents from "./bento/parallel-agents" // Updated import
 
 const BentoCard = ({ title, description, Component }) => (
-  <div className="overflow-hidden rounded-2xl border border-white/20 flex flex-col justify-start items-start relative">
+  <div
+    className="group overflow-hidden rounded-2xl border border-white/20 flex flex-col justify-start items-start relative 
+                 transition-all duration-300 ease-in-out
+                 hover:scale-105 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10"
+  >
+    {/* Spotlight Effect Div */}
+    <div
+      className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      style={{
+        background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), hsl(var(--primary) / 0.15), transparent 80%)`,
+      }}
+    />
     {/* Background with blur effect */}
     <div
       className="absolute inset-0 rounded-2xl"
@@ -34,6 +47,13 @@ const BentoCard = ({ title, description, Component }) => (
 )
 
 export function BentoSection() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+  }
+
   const cards = [
     {
       title: "AI-powered code reviews.",
@@ -82,7 +102,16 @@ export function BentoSection() {
             </p>
           </div>
         </div>
-        <div className="self-stretch grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 z-10">
+        <div
+          className="self-stretch grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 z-10"
+          onMouseMove={handleMouseMove}
+          style={
+            {
+              "--mouse-x": `${mousePosition.x}px`,
+              "--mouse-y": `${mousePosition.y}px`,
+            } as React.CSSProperties
+          }
+        >
           {cards.map((card) => (
             <BentoCard key={card.title} {...card} />
           ))}

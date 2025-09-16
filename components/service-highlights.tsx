@@ -1,6 +1,10 @@
+"use client"
+
+import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Network, Cloud, Zap, Shield } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 const services = [
   {
@@ -26,8 +30,10 @@ const services = [
 ]
 
 export function ServiceHighlights() {
+  const [animatingCard, setAnimatingCard] = useState<number | null>(null)
+
   return (
-    <section className="py-16">
+    <section className="py-8">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
           Conectando Desafios a Oportunidades
@@ -41,7 +47,16 @@ export function ServiceHighlights() {
         {services.map((service, index) => (
           <Card
             key={index}
-            className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-colors group"
+            onMouseEnter={() => {
+              if (animatingCard === null) {
+                setAnimatingCard(index)
+              }
+            }}
+            onAnimationEnd={() => setAnimatingCard(null)}
+            className={cn(
+              "bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-colors group",
+              { "is-animating": animatingCard === index }
+            )}
           >
             <CardContent className="p-6 text-center">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">

@@ -1,15 +1,17 @@
 "use client"
 
 import type React from "react"
-
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { TypewriterText } from "./typewriter-text"
+import { cn } from "@/lib/utils"
 
 export function Header() {
+  const pathname = usePathname()
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Sobre", href: "/sobre" },
@@ -55,14 +57,19 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 onClick={(e) => handleScroll(e, item.href)}
-                className="text-muted-foreground hover:text-foreground px-5 py-3 rounded-full font-medium text-lg transition-colors"
+                className={cn(
+                  "px-5 py-3 rounded-full font-medium text-lg transition-all transform hover:scale-105",
+                  pathname === item.href
+                    ? "text-primary scale-105"
+                    : "text-white hover:text-primary"
+                )}
               >
                 {item.name}
               </Link>
             ))}
           </nav>
           <Link href="/contato" className="hidden md:block">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-full font-medium text-lg shadow-sm">
+            <Button className="bg-primary text-primary-foreground px-8 py-3 rounded-full font-medium text-lg shadow-sm">
               Contato
             </Button>
           </Link>
@@ -83,13 +90,18 @@ export function Header() {
                     key={item.name}
                     href={item.href}
                     onClick={(e) => handleScroll(e, item.href)}
-                    className="text-muted-foreground hover:text-foreground justify-start text-lg py-2"
+                    className={cn(
+                      "justify-start text-lg py-2 transition-all transform hover:scale-105",
+                      pathname === item.href
+                        ? "text-primary scale-105"
+                        : "text-white hover:text-primary"
+                    )}
                   >
                     {item.name}
                   </Link>
                 ))}
                 <Link href="/contato" className="w-full mt-4">
-                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-2 rounded-full font-medium shadow-sm w-full">
+                  <Button className="bg-primary text-primary-foreground px-6 py-2 rounded-full font-medium shadow-sm w-full">
                     Contato
                   </Button>
                 </Link>
