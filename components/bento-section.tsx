@@ -7,31 +7,21 @@ import MCPConnectivityIllustration from "./bento/mcp-connectivity-illustration" 
 import EasyDeployment from "./bento/easy-deployment"
 import ParallelCodingAgents from "./bento/parallel-agents" // Updated import
 
-const BentoCard = ({ title, description, Component }) => (
+interface BentoCardProps {
+  title: string
+  description: string
+  Component: React.ComponentType // Tipo para um componente React
+}
+const BentoCard = ({ title, description, Component }: BentoCardProps) => (
   <div
     className="group overflow-hidden rounded-2xl border border-white/20 flex flex-col justify-start items-start relative 
-                 transition-all duration-300 ease-in-out
-                 hover:scale-105 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10"
+               transition-all duration-300 ease-in-out
+               hover:scale-105 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10"
   >
-    {/* Spotlight Effect Div */}
-    <div
-      className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-      style={{
-        background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), hsl(var(--primary) / 0.15), transparent 80%)`,
-      }}
-    />
-    {/* Background with blur effect */}
-    <div
-      className="absolute inset-0 rounded-2xl"
-      style={{
-        background: "rgba(231, 236, 235, 0.08)",
-        backdropFilter: "blur(4px)",
-        WebkitBackdropFilter: "blur(4px)",
-      }}
-    />
-    {/* Additional subtle gradient overlay */}
+    {/* O restante do JSX do seu componente continua aqui... */}
+    <div className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), hsl(var(--primary) / 0.15), transparent 80%)` }} />
+    <div className="absolute inset-0 rounded-2xl" style={{ background: "rgba(231, 236, 235, 0.08)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)" }} />
     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl" />
-
     <div className="self-stretch p-6 flex flex-col justify-start items-start gap-2 relative z-10">
       <div className="self-stretch flex flex-col justify-start items-start gap-1.5">
         <p className="self-stretch text-foreground text-lg font-normal leading-7">

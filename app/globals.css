@@ -125,24 +125,3 @@
 .glow-on-hover:hover {
   animation: glow-pulse 2s ease-in-out infinite;
 }
-
-/* Animated border for service cards */
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes border-sweep {
-  to {
-    --angle: 360deg;
-  }
-}
-
-@layer components {
-  .is-animating {
-    border: 1px solid;
-    border-image: conic-gradient(from var(--angle), hsl(var(--primary) / 0.2), hsl(var(--primary)), hsl(var(--primary) / 0.2)) 1;
-    animation: border-sweep 1.5s linear;
-  }
-}

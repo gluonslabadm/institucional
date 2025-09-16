@@ -1,10 +1,7 @@
-"use client"
-
-import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Network, Cloud, Zap, Shield } from "lucide-react"
-import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 const services = [
   {
@@ -30,8 +27,6 @@ const services = [
 ]
 
 export function ServiceHighlights() {
-  const [animatingCard, setAnimatingCard] = useState<number | null>(null)
-
   return (
     <section className="py-8">
       <div className="text-center mb-12">
@@ -47,16 +42,7 @@ export function ServiceHighlights() {
         {services.map((service, index) => (
           <Card
             key={index}
-            onMouseEnter={() => {
-              if (animatingCard === null) {
-                setAnimatingCard(index)
-              }
-            }}
-            onAnimationEnd={() => setAnimatingCard(null)}
-            className={cn(
-              "bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-colors group",
-              { "is-animating": animatingCard === index }
-            )}
+            className="bg-muted border border-border/20 hover:border-primary transition-colors duration-300 group h-full"
           >
             <CardContent className="p-6 text-center">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
@@ -70,9 +56,11 @@ export function ServiceHighlights() {
       </div>
 
       <div className="text-center">
-        <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-          Ver Todos os Serviços
-        </Button>
+        <Link href="/servicos">
+          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+            Ver Todos os Serviços
+          </Button>
+        </Link>
       </div>
     </section>
   )

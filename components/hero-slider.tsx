@@ -9,19 +9,19 @@ const slides = [
     id: 1,
     title: "Gluons Lab: A Força Coesiva para o seu Sucesso Digital",
     subtitle: "Conectamos tecnologia e inovação para transformar desafios em oportunidades",
-    backgroundImage: "/abstract-technology-network-connections-dark-space.png",
+    backgroundImage: "/modo_1.jpg",
   },
   {
     id: 2,
     title: "Arquitetos das Conexões Invisíveis",
     subtitle: "Desenvolvemos soluções que fortalecem a estrutura digital do seu negócio",
-    backgroundImage: "/digital-architecture-cosmic-background-with-glowin.png",
+    backgroundImage: "/modo_2.jpg",
   },
   {
     id: 3,
     title: "Inovação que Conecta Mundos",
     subtitle: "Integramos sistemas complexos com a precisão de partículas fundamentais",
-    backgroundImage: "/particle-physics-visualization-in-space-with-purpl.png",
+    backgroundImage: "/modo_3.jpg",
   },
 ]
 
@@ -66,13 +66,17 @@ export function HeroSlider() {
                 {slide.subtitle}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3">
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-xl shadow-primary/40 hover:border-primary/70"
+                >
                   Conheça Nossos Serviços
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-border text-foreground hover:bg-muted px-8 py-3 bg-transparent"
+                  className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-xl shadow-primary/40 hover:border-primary/70"
                 >
                   Entre em Contato
                 </Button>

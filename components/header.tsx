@@ -69,7 +69,7 @@ export function Header() {
             ))}
           </nav>
           <Link href="/contato" className="hidden md:block">
-            <Button className="bg-primary text-primary-foreground px-8 py-3 rounded-full font-medium text-lg shadow-sm">
+            <Button variant="outline" className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-lg shadow-primary/40 hover:border-primary/70">
               Contato
             </Button>
           </Link>
