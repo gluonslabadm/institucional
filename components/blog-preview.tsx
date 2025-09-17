@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Calendar, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 const blogPosts = [
   {
@@ -28,7 +29,7 @@ const blogPosts = [
 
 export function BlogPreview() {
   return (
-    <section className="py-16">
+    <section className="py-6">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
           Insights do Nosso Laboratório
@@ -73,10 +74,12 @@ export function BlogPreview() {
         ))}
       </div>
 
-      <div className="text-center">
-        <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-muted bg-transparent">
-          Ver Todos os Artigos
-        </Button>
+      <div className="text-center mb-16">
+        <Link href="/sobre">
+            <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-xl shadow-primary/40 hover:border-primary/70">
+              Conheça nossa História
+            </Button>
+          </Link>
       </div>
     </section>
   )
