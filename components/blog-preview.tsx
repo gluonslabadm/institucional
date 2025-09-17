@@ -42,7 +42,7 @@ export function BlogPreview() {
         {blogPosts.map((post) => (
           <Card
             key={post.id}
-            className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-colors group overflow-hidden"
+            className="bg-muted border border-border/20 hover:border-primary transition-colors duration-300 group h-full overflow-hidden"
           >
             <div className="relative">
               <img
@@ -50,7 +50,6 @@ export function BlogPreview() {
                 alt={post.title}
                 className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
             </div>
             <CardContent className="p-6">
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
@@ -61,9 +60,14 @@ export function BlogPreview() {
                 {post.title}
               </h3>
               <p className="text-sm text-muted-foreground mb-4">{post.excerpt}</p>
-              <Button variant="ghost" size="sm" className="p-0 h-auto text-primary hover:text-primary/80">
-                Ler mais <ArrowRight className="w-4 h-4 ml-1" />
-              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="group p-1 h-auto text-white hover:text-black font-bold"
+              >
+              Ler mais
+              <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
+            </Button>
             </CardContent>
           </Card>
         ))}

@@ -99,7 +99,7 @@ export function BlogGrid() {
     <div className="space-y-12">
       {/* Featured Post */}
       {featuredPost && (
-        <Card className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-colors group overflow-hidden">
+        <Card className="bg-muted border border-border/20 hover:border-primary transition-colors duration-300 group h-full overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
             <div className="relative">
               <img
@@ -148,7 +148,7 @@ export function BlogGrid() {
         {regularPosts.map((post) => (
           <Card
             key={post.id}
-            className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-colors group overflow-hidden"
+            className="bg-muted border border-border/20 hover:border-primary transition-colors duration-300 group h-full overflow-hidden"
           >
             <div className="relative">
               <img
