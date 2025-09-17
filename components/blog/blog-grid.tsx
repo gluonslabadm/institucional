@@ -101,13 +101,12 @@ export function BlogGrid() {
       {featuredPost && (
         <Card className="bg-muted border border-border/20 hover:border-primary transition-colors duration-300 group h-full overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-            <div className="relative">
+            <div className="relative aspect-video overflow-hidden">
               <img
                 src={featuredPost.image || "/placeholder.svg"}
                 alt={featuredPost.title}
-                className="w-full h-64 lg:h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/60 lg:bg-gradient-to-r lg:from-transparent lg:to-background/60"></div>
               <Badge className="absolute top-4 left-4 bg-primary/90 text-primary-foreground">Destaque</Badge>
             </div>
 
@@ -156,7 +155,6 @@ export function BlogGrid() {
                 alt={post.title}
                 className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
               <Badge className="absolute top-4 left-4 bg-primary/90 text-primary-foreground text-xs">
                 {post.category}
               </Badge>

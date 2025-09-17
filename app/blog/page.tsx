@@ -10,7 +10,7 @@ export const metadata = {
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-background">
-      <div className="pt-24 pb-16">
+      <div className="pt-10 pb-16">
         <AnimatedSection className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
