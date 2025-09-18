@@ -113,7 +113,7 @@ export function CTASection() {
         </div>
         <Link href="/contato">
           <Button
-            className="px-[30px] py-2 bg-primary text-primary-foreground text-base font-medium leading-6 rounded-[99px] shadow-[0px_0px_0px_4px_rgba(139,92,246,0.13)] hover:bg-primary/90 transition-all duration-200"
+            variant="outline" className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-xl shadow-primary/40 hover:border-primary/70"
             size="lg"
           >
             Entre em Contato

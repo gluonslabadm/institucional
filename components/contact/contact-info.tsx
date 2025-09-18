@@ -53,7 +53,7 @@ export function ContactInfo() {
 
       <div className="space-y-4">
         {contactDetails.map((detail, index) => (
-          <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-colors">
+          <Card key={index} className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 hover:border-primary transition-colors">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
