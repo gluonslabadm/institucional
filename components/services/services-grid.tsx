@@ -92,16 +92,8 @@ export function ServicesGrid() {
       </div>
 
       <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-background border-border">
+        <DialogContent className="custom-dialog-content max-w-4xl max-h-[90vh] overflow-y-auto bg-background border-border hover:border-primary">
           <DialogHeader className="relative">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-0 top-0 text-muted-foreground hover:text-foreground"
-              onClick={() => setSelectedService(null)}
-            >
-              <X className="w-4 h-4" />
-            </Button>
             <DialogTitle className="text-2xl font-heading font-bold text-foreground pr-8">
               {selectedService?.title}
             </DialogTitle>

@@ -147,3 +147,17 @@
   border-radius: 10px;
   border: 3px solid hsl(var(--muted));
 }
+
+/* Alternativa com CSS puro */
+.custom-dialog-content > button[aria-label="Close"] {
+  position: absolute;
+  right: 1rem; /* Equivalente a right-4 do Tailwind */
+  top: 1rem;   /* Equivalente a top-4 do Tailwind */
+  color: hsl(var(--muted-foreground)); /* Cor que você usou */
+  opacity: 1; /* Garante que não fique semi-transparente */
+  transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.custom-dialog-content > button[aria-label="Close"]:hover {
+  color: hsl(var(--foreground)); /* Cor do hover que você usou */
+}
