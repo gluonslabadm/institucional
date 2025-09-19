@@ -2,32 +2,32 @@ import { Card, CardContent } from "@/components/ui/card"
 
 const milestones = [
   {
-    year: "2020",
+    year: "2025",
     title: "Fundação",
     description: "Nascemos com a missão de conectar tecnologias e criar soluções inovadoras para empresas visionárias.",
   },
   {
-    year: "2021",
+    year: "2025.2",
     title: "Primeiros Projetos",
     description: "Desenvolvemos nossas primeiras integrações de sistemas, estabelecendo nossa reputação no mercado.",
   },
   {
-    year: "2022",
+    year: "2025.3",
     title: "Expansão de Serviços",
-    description: "Ampliamos nosso portfólio para incluir soluções em nuvem e desenvolvimento de APIs robustas.",
+    description: "Ampliamos nosso portfólio para incluir soluções em nuvem e analise da segurança de sowftwares.",
   },
   {
-    year: "2023",
+    year: "2026",
     title: "Reconhecimento",
     description: "Fomos reconhecidos como uma das empresas mais inovadoras em integração de sistemas.",
   },
   {
-    year: "2024",
+    year: "2026.2",
     title: "Crescimento Sustentável",
     description: "Consolidamos nossa posição como líderes em conectividade digital e soluções tecnológicas.",
   },
   {
-    year: "2025",
+    year: "2026.3",
     title: "Futuro Conectado",
     description: "Continuamos evoluindo, sempre buscando novas formas de fortalecer o ecossistema digital.",
   },

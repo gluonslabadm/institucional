@@ -4,7 +4,7 @@ export function WhoWeAre() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
           <h1 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">Quem Somos</h1>
-          <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+          <div className="space-y-6 text-lg text-muted-foreground leading-relaxed text-justify">
             <p>
               Na Gluons Lab, somos mais do que uma empresa de desenvolvimento de software. Somos os arquitetos das
               conexões invisíveis que mantêm o mundo digital unido e funcionando em perfeita harmonia.

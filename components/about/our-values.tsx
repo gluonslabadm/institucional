@@ -50,7 +50,7 @@ export function OurValues() {
         {values.map((value, index) => (
           <Card
             key={index}
-            className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-colors group"
+            className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 hover:border-primary transition-colors group"
           >
             <CardContent className="p-8 text-center">
               <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
