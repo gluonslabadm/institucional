@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import {  ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 const services = [
   {
@@ -116,7 +117,11 @@ export function ServicesGrid() {
               </div>
 
               <div className="flex gap-4 pt-4">
-                <Button variant="outline" className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-xl shadow-primary/40 hover:border-primary/70">Solicitar Orçamento</Button>
+                <Button asChild variant="outline" className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-xl shadow-primary/40 hover:border-primary/70">
+                  <Link href="/contato">
+                    Solicitar Orçamento
+                  </Link>
+                </Button>
                 <Button variant="outline" className="border-border text-foreground hover:bg-muted bg-transparent">
                   Saiba Mais
                 </Button>

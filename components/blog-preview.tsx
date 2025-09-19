@@ -76,10 +76,10 @@ export function BlogPreview() {
 
       <div className="text-center mb-16">
         <Link href="/blog">
-            <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-xl shadow-primary/40 hover:border-primary/70">
-              Conheça nosso Blog
-            </Button>
-          </Link>
+          <Button size="lg" variant="outline" className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-xl shadow-primary/40 hover:border-primary/70">
+            Conheça nosso Blog
+          </Button>
+        </Link>
       </div>
     </section>
   )
