@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Network, Lightbulb, Zap, Users, Shield } from "lucide-react"
+import { Network, Lightbulb, Zap, Users, ShieldCheck, Boxes   } from "lucide-react"
 
 const values = [
   {
@@ -27,16 +27,22 @@ const values = [
       "Trabalhamos em parceria com nossos clientes, criando um ambiente de confiança mútua e crescimento conjunto.",
   },
   {
-    icon: Shield,
+    icon: Boxes,
     title: "Integridade",
     description:
       "Mantemos os mais altos padrões éticos em todos os nossos projetos, priorizando transparência e qualidade.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Segurança",
+    description:
+      "Temos as melhores técnicas e práticas para garantir a proteção dos dados e sistemas de nossos clientes.",
   },
 ]
 
 export function OurValues() {
   return (
-    <section className="py-16">
+    <section className="py-6">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
           Nossa Metodologia e Valores
