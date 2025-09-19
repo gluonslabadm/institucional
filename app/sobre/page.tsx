@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background/65">
       <div className="pt-24 pb-16">
         <AnimatedSection className="max-w-7xl mx-auto px-6">
           <WhoWeAre />

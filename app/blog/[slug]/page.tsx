@@ -64,7 +64,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background/65">
       <div className="pt-10 pb-16">
         <AnimatedSection className="max-w-4xl mx-auto px-6">
           {/* Back Button */}
