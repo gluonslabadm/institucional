@@ -31,7 +31,7 @@ export function CTASection() {
                 rx="670.109"
                 ry="354.908"
                 fill="url(#paint1_radial_182_1049)"
-                fillOpacity="0.8"
+                fillOpacity="1"
               />
             </g>
             <ellipse cx="694" cy="-91.5385" rx="670.109" ry="354.908" fill="url(#paint2_linear_182_1049)" />

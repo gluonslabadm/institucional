@@ -100,7 +100,7 @@
   left: 0;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, hsl(var(--primary) / 0.04) 25%, transparent 50%);
+  background: radial-gradient(circle, hsl(var(--primary) / 0.16) 0%, hsl(var(--primary) / 0.04) 25%, transparent 50%);
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
