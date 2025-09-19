@@ -7,9 +7,10 @@ import { AnimatedSection } from "@/components/animated-section"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen bg-background/65 relative overflow-hidden">
       <div className="relative z-10">
         {/* Hero Section with Slider */}
+        
         <HeroSlider />
 
         {/* Service Highlights */}
