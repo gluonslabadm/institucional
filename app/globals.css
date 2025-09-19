@@ -147,8 +147,6 @@
   border-radius: 10px;
   border: 3px solid hsl(var(--muted));
 }
-
-/* Alternativa com CSS puro */
 .custom-dialog-content > button[aria-label="Close"] {
   position: absolute;
   right: 1rem; /* Equivalente a right-4 do Tailwind */

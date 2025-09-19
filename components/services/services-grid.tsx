@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { X } from "lucide-react"
+import {  ArrowRight } from "lucide-react"
 
 const services = [
   {
@@ -18,11 +18,11 @@ const services = [
   },
   {
     id: 2,
-    title: "Desenvolvimento de APIs",
-    shortDescription: "Criamos APIs robustas e seguras que facilitam a comunicação entre diferentes aplicações.",
+    title: "Analise de Segurança",
+    shortDescription: "Criamos relatórios detalhados para identificar vulnerabilidades e fortalecer a segurança do seu sistema.",
     longDescription:
-      "Desenvolvemos APIs RESTful e GraphQL de alta performance que servem como a espinha dorsal da comunicação entre seus sistemas. Nossas APIs são projetadas com foco em segurança, escalabilidade e facilidade de uso. Implementamos autenticação robusta, documentação completa e monitoramento em tempo real. Seja para integrar sistemas internos ou criar plataformas para terceiros, nossas APIs garantem comunicação eficiente e confiável.",
-    image: "/api-connections-network-visualization.png",
+      "Em um cenário onde as ameaças digitais são constantes e sofisticadas, a segurança proativa é fundamental. Nosso serviço de Análise de Segurança oferece uma avaliação 360 graus dos seus ativos digitais, abrangendo aplicações, redes, infraestrutura em nuvem e processos internos. Simulamos ataques controlados e utilizamos as mais modernas ferramentas para descobrir e documentar brechas de segurança, desde configurações incorretas até vulnerabilidades complexas. Nosso relatório final serve como um guia estratégico, capacitando sua empresa a proteger dados sensíveis, garantir conformidade com regulamentações (como a LGPD) e, acima de tudo, preservar a confiança de seus clientes e parceiros.",
+    image: "/seguranca_1.jpg",
   },
   {
     id: 3,
@@ -30,14 +30,14 @@ const services = [
     shortDescription: "Migramos e otimizamos sua infraestrutura para a nuvem, garantindo escalabilidade e performance.",
     longDescription:
       "Transformamos sua infraestrutura tradicional em uma arquitetura de nuvem moderna e eficiente. Oferecemos serviços completos de migração, desde o planejamento estratégico até a implementação e otimização contínua. Trabalhamos com as principais plataformas de nuvem (AWS, Azure, Google Cloud) para garantir alta disponibilidade, escalabilidade automática e redução de custos operacionais. Implementamos práticas de DevOps e automação para acelerar deployments e melhorar a confiabilidade.",
-    image: "/placeholder.svg?key=cloud1",
+    image: "/nuvem_1.jpg",
   },
   {
     id: 4,
     title: "Segurança Digital",
     shortDescription: "Implementamos as melhores práticas de segurança para proteger seus dados e sistemas.",
     longDescription:
-      "Protegemos seus ativos digitais com soluções de segurança abrangentes e atualizadas. Nossa abordagem inclui análise de vulnerabilidades, implementação de controles de acesso, criptografia de dados, monitoramento de segurança 24/7 e planos de resposta a incidentes. Seguimos os frameworks de segurança mais rigorosos e mantemos conformidade com regulamentações como LGPD, ISO 27001 e outras normas relevantes para seu setor.",
+      "Nossa abordagem à segurança digital é baseada em uma arquitetura robusta e de múltiplas camadas, seguindo os princípios de Zero Trust. Implementamos e gerenciamos um ecossistema de segurança completo, que inclui gestão de identidade e acesso (IAM), criptografia de dados em trânsito e em repouso, e soluções avançadas de detecção e resposta (EDR/XDR). Através de nossas soluções de SIEM e SOC, realizamos o monitoramento de segurança 24/7, correlacionando eventos para caçar ameaças ativamente. Além de garantir conformidade com frameworks como ISO 27001 e LGPD, nosso foco é elevar a maturidade de segurança da sua organização, criando uma defesa resiliente e adaptável.", 
     image: "/cloud-security-digital-fortress.png",
   },
   {
@@ -45,16 +45,16 @@ const services = [
     title: "Análise de Dados e Big Data",
     shortDescription: "Transformamos seus dados em insights valiosos para tomada de decisões estratégicas.",
     longDescription:
-      "Ajudamos sua empresa a extrair valor máximo dos seus dados através de soluções avançadas de analytics e big data. Desenvolvemos pipelines de dados robustos, implementamos ferramentas de visualização interativas e criamos modelos preditivos que impulsionam a tomada de decisões. Nossa expertise inclui data warehousing, processamento em tempo real, machine learning e inteligência artificial aplicada aos seus desafios de negócio.",
-    image: "/placeholder.svg?key=data1",
+      "Nós projetamos e implementamos ecossistemas de dados modernos, prontos para a era da Inteligência Artificial. Nossa abordagem abrange a construção de arquiteturas escaláveis, como Data Lakehouses, e a orquestração de pipelines de dados via processos de ELT (Extract, Load, Transform) de alta performance. Desenvolvemos e treinamos modelos de Machine Learning customizados para desafios como previsão de churn, detecção de anomalias e otimização de precificação, aplicando práticas de MLOps para garantir o ciclo de vida, monitoramento e performance contínua dos modelos em produção. Nosso objetivo é transformar seus dados em um ativo estratégico governado, impulsionando uma cultura verdadeiramente data-driven.",
+    image: "/analitic_1.jpg",
   },
   {
     id: 6,
     title: "Automação de Processos",
     shortDescription: "Automatizamos workflows complexos para aumentar eficiência e reduzir erros operacionais.",
     longDescription:
-      "Identificamos e automatizamos processos manuais repetitivos, criando workflows inteligentes que aumentam a produtividade e reduzem custos operacionais. Utilizamos tecnologias como RPA (Robotic Process Automation), workflows baseados em eventos e integração de sistemas para criar soluções de automação personalizadas. Nosso foco é liberar sua equipe para atividades estratégicas enquanto garantimos execução consistente e livre de erros.",
-    image: "/placeholder.svg?key=auto1",
+      "Nós transformamos a automação de tarefas em uma orquestração de processos de ponta a ponta. Iniciamos com Process Mining para descobrir gargalos e ineficiências ocultas, utilizando modelagem em BPMN para desenhar workflows otimizados e resilientes. Nossas soluções integram plataformas de RPA (Robotic Process Automation), iPaaS (Integration Platform as a Service) e APIs customizadas para criar um sistema nervoso digital que opera com precisão e escalabilidade. O foco é construir uma arquitetura de hiperautomação, onde cada processo é não apenas automatizado, mas também monitorado, gerenciado e continuamente otimizado através de analytics, garantindo governança e performance excepcionais.",
+    image: "/automacao_1.jpg",
   },
 ]
 
@@ -67,7 +67,7 @@ export function ServicesGrid() {
         {services.map((service) => (
           <Card
             key={service.id}
-            className="bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 transition-colors group cursor-pointer"
+            className="bg-card/50 backdrop-blur-sm hover:border-primary border-border/50 hover:bg-card/70 transition-colors group cursor-pointer"
             onClick={() => setSelectedService(service)}
           >
             <div className="relative overflow-hidden rounded-t-lg">
@@ -76,16 +76,17 @@ export function ServicesGrid() {
                 alt={service.title}
                 className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent"></div>
             </div>
             <CardContent className="p-6">
               <h3 className="text-xl font-heading font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
                 {service.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">{service.shortDescription}</p>
-              <Button variant="ghost" size="sm" className="p-0 h-auto text-primary hover:text-primary/80">
-                Ver Detalhes →
+              <Button variant="ghost" size="sm" className="group p-1 h-auto text-white hover:text-black font-bold">
+                Ver Detalhes
+                <ArrowRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
               </Button>
+              
             </CardContent>
           </Card>
         ))}
@@ -110,12 +111,12 @@ export function ServicesGrid() {
                 <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
               </div>
 
-              <div className="prose prose-invert max-w-none">
+              <div className="prose prose-invert max-w-none text-justify">
                 <p className="text-muted-foreground leading-relaxed text-base">{selectedService.longDescription}</p>
               </div>
 
               <div className="flex gap-4 pt-4">
-                <Button className="bg-primary text-primary-foreground hover:bg-primary/90">Solicitar Orçamento</Button>
+                <Button variant="outline" className="border-border text-foreground hover:bg-muted px-8 py-3 bg-primary/90 shadow-xl shadow-primary/40 hover:border-primary/70">Solicitar Orçamento</Button>
                 <Button variant="outline" className="border-border text-foreground hover:bg-muted bg-transparent">
                   Saiba Mais
                 </Button>
