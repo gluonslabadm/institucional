@@ -10,7 +10,6 @@ export default function HomePage() {
     <div className="min-h-screen bg-background/65 relative overflow-hidden">
       <div className="relative z-10">
         {/* Hero Section with Slider */}
-        
         <HeroSlider />
 
         {/* Service Highlights */}
